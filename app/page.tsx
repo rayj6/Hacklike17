@@ -1,66 +1,80 @@
+"use client";
+
+import "./styles/Home.css";
 import Image from "next/image";
-import styles from "./page.module.css";
+import { useState } from "react";
+
+import NavBar from "./components/NavBar";
+import TopBar from "./components/TopBar";
+import UserSection from "./components/MainContent/UserSection";
+import AlertSection from "./components/MainContent/AlertSection";
+import SocialService from "./components/MainContent/SocialService";
+import Post from "./components/MainContent/Post";
+import Notification from "./components/SideContent/Notification";
+import Support from "./components/SideContent/Support";
+import FAQ from "./components/SideContent/FAQ";
+import Usage from "./components/SideContent/Usage";
+
+// Simple component for the bottom bar item for demonstration
+const BottomBarItem = ({ icon, text, active }: any) => (
+  <div className={`BottomBarItem ${active ? "active" : ""}`}>
+    <span className="icon">{icon}</span>
+    <span className="text">{text}</span>
+  </div>
+);
 
 export default function Home() {
+  const [Balance, setBalance] = useState<number>(0);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+
+  const handleToggleDarkMode = () => {
+    setIsDarkMode((prevMode) => !prevMode);
+  };
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="AppContainer">
+      {/* NavBar */}
+      <NavBar />
+
+      {/* TopBar */}
+      <TopBar
+        Balance={Balance}
+        isDarkMode={isDarkMode}
+        handleToggleDarkMode={handleToggleDarkMode}
+      />
+
+      {/* MainContent */}
+      <div className="Main">
+        {/* 1. Left Column: Top Content (User, Alert, Social) */}
+        <div className="MainContent">
+          <UserSection />
+          <AlertSection />
+          <SocialService />
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* 2. Right Column: Side Content (Notification, Support, FAQ, Usage) */}
+        <div className="SideContent">
+          <Notification />
+          <Support />
+          <FAQ />
+          <Usage />
         </div>
-      </main>
+
+        {/* 3. NEW: Posts, separated for mobile reordering */}
+        <div className="PostsWrapper">
+          <Post />
+          <Post />
+          <Post />
+        </div>
+      </div>
+
+      {/* Mobile Bottom Navigation Bar (as seen in the design image) */}
+      <div className="BottomBar">
+        <BottomBarItem icon="🏠" text="Trang chủ" active={true} />
+        <BottomBarItem icon="💳" text="Nạp tiền" active={false} />
+        <BottomBarItem icon="📣" text="Hịch vụ" active={false} />
+        <BottomBarItem icon="📜" text="Lịch sử" active={false} />
+      </div>
     </div>
   );
 }
