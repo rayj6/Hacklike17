@@ -36,7 +36,15 @@
   /* RESPONSIVE: Use fixed positioning and absolute units for the sidebar */
   position: fixed;
   overflow-y: scroll;
+  /* Always hide the scrollbar for the NavBar content */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+.NavBar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
 
+.NavBar {
   width: 250px; /* Fixed width for desktop */
   height: 100vh;
   z-index: 100; /* Ensure it's above other elements */
@@ -303,18 +311,17 @@
 }
 
 .Main {
-  /* RESPONSIVE: Adjust for NavBar position/width */
-  position: relative;
-  top: 15vh;
-  left: 250px; /* Start after NavBar */
-  width: calc(
-    100% - 260px
-  ); /* Total width minus NavBar width, -10px margin on right/left for padding */
-  padding: 0 10px; /* Add some padding */
+  /* CRITICAL CHANGE: Use margins to position content below fixed TopBar and next to fixed NavBar */
+  margin-top: 10vh; /* Start content below the 10vh TopBar */
+  margin-left: 250px; /* Start content after the 250px fixed NavBar */
+  width: calc(100% - 250px); /* Take up the remaining horizontal space */
+  /* Added generous padding for scrolling comfort, especially on the bottom */
+  padding: 20px 20px 80px 20px;
 
   display: flex;
   flex-direction: row;
   justify-content: center; /* Center content horizontally */
+  align-items: flex-start; /* Align content to the top */
 }
 
 .MainContent {
@@ -660,6 +667,7 @@ textarea:focus {
   position: relative;
   margin-top: 20px;
   margin-bottom: 20px;
+  overflow: hidden;
 
   padding-top: 20px;
   padding-bottom: 20px;
@@ -710,7 +718,8 @@ textarea:focus {
   height: auto;
 }
 
-#PostText textarea {
+#PostText p {
+  padding: 10px;
   width: 100%;
   height: auto;
   outline: none;
@@ -1057,7 +1066,7 @@ textarea:focus {
 /* ------- */
 
 #video-preview {
-  width: 100%;
+  width: 280px;
   height: 150px;
   overflow: hidden;
   border-radius: 16px;
@@ -1141,12 +1150,7 @@ textarea:focus {
   }
 
   .Main {
-    left: 250px; /* Still fixed based on the NavBar width */
-    width: calc(100% - 260px);
-  }
-
-  /* Make Main content and Side content more flexible and ensure no overflow */
-  .Main {
+    /* Rely on base styles for margin-left and margin-top */
     flex-wrap: wrap; /* Allow side content to wrap if there's not enough room */
     justify-content: flex-start;
   }
@@ -1200,11 +1204,11 @@ textarea:focus {
 
   .Main {
     /* Reset position for full width content */
-    top: 10vh; /* Start after the top bar */
-    left: 0;
+    margin-top: 10vh; /* Keep the margin-top for the sticky TopBar */
+    margin-left: 0; /* Full width, no NavBar offset */
     width: 100%;
     /* CRITICAL: Add padding to the bottom to clear the fixed BottomBar (60px height) */
-    padding: 0 10px 70px 10px;
+    padding: 20px 10px 80px 10px; /* Refined padding */
 
     flex-direction: column; /* Stack main and side content */
     flex-wrap: nowrap;
@@ -1299,5 +1303,217 @@ textarea:focus {
     display: block;
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+/* Desktop: show PostsDesktop, hide PostsMobile */
+.PostsDesktop {
+  display: block;
+}
+.PostsMobile {
+  display: none;
+}
+
+/* MOBILE CUSTOM ORDER */
+@media (max-width: 768px) {
+  /* Remove layout blocking wrappers */
+  .MainContent,
+  .SideContent {
+    display: contents;
+  }
+
+  /* 1. User always first */
+  #UserSection {
+    order: 1 !important;
+  }
+
+  /* 2. Notification */
+  .notification-widget {
+    order: 2 !important;
+  }
+
+  /* 3. Support */
+  .support-container {
+    order: 3 !important;
+  }
+
+  /* 4. FAQ */
+  .faq-widget {
+    order: 4 !important;
+  }
+
+  /* 5. Usage */
+  .usage-container {
+    order: 5 !important;
+  }
+
+  /* 6. Alert section */
+  #AlertContainer {
+    order: 6 !important;
+  }
+
+  /* 7. Service */
+  #ServiceContainer {
+    order: 7 !important;
+  }
+
+  /* 8. Posts bottom */
+  .PostsMobile {
+    order: 8 !important;
+  }
+
+  .PostsDesktop {
+    display: none;
+  }
+}
+
+/* STOP MainContent from blocking UserSection reorder */
+.MainContent {
+  display: contents; /* 🟢 removes wrapper so children reorder correctly */
+}
+
+.SideContent {
+  display: contents; /* 🟢 same for side content */
+}
+
+/* ============================================
+   📱 MOBILE FIX — Match exact UI design
+   ============================================ */
+@media (max-width: 768px) {
+  /* Replace background with mobile version */
+  #UserSection {
+    background-image: url("/assets/background/mobile.svg");
+    flex-direction: column;
+    height: auto;
+    padding: 20px 16px;
+    border-radius: 16px;
+    align-items: flex-start;
+  }
+
+  /* Avatar centered on top */
+  #AvatarContainer {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  #AvatarContainer img {
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  /* Information section */
+  #InfoContainer {
+    width: 100%;
+    margin: 0;
+  }
+
+  /* First row (Username + Balance) */
+  #FirstSection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+
+  #FirstSection-info #Username {
+    font-size: 18px !important;
+    color: #333333;
+    margin-bottom: 2px;
+    font-weight: 600;
+  }
+
+  #Email {
+    font-size: 16px;
+    color: #333333;
+    font-weight: 300;
+  }
+
+  #FirstSection-amount {
+    margin-top: 20px;
+    border: 3px solid #ffffff44;
+    padding: 4px 10px;
+    width: auto;
+    height: auto;
+    gap: 6px;
+  }
+
+  #FirstSection-amount p {
+    color: white !important;
+    font-size: 16px;
+  }
+
+  /* Second row */
+  #SecondSection {
+    width: 100%;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  #SecondSection-info {
+    width: 60%;
+  }
+
+  #SecondSection-info p {
+    color: #333333;
+    font-size: 14px;
+  }
+
+  #SecondSection-amount {
+    color: #ffffff;
+    font-size: 14px;
+  }
+
+  /* Third row */
+  #ThirdSection {
+    width: 100%;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  #ThirdSection-info {
+    width: 60%;
+  }
+
+  #ThirdSection-info p {
+    color: #333333;
+    font-size: 14px;
+  }
+
+  #ThirdSection-type {
+    color: white;
+    font-size: 14px;
+  }
+
+  /* Progress bar */
+  .progress-bar {
+    width: 100%;
+    margin-top: 14px;
+    height: 8px;
+    background: white;
+    border-radius: 6px;
+  }
+
+  .progress-filler {
+    border-radius: 6px;
+  }
+
+  /* Bottom note */
+  #Note {
+    margin-top: 8px;
+    font-size: 13px;
+    color: white;
+    opacity: 0.9;
   }
 }

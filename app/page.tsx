@@ -1,7 +1,6 @@
 "use client";
 
 import "./styles/Home.css";
-import Image from "next/image";
 import { useState } from "react";
 
 import NavBar from "./components/NavBar";
@@ -10,12 +9,12 @@ import UserSection from "./components/MainContent/UserSection";
 import AlertSection from "./components/MainContent/AlertSection";
 import SocialService from "./components/MainContent/SocialService";
 import Post from "./components/MainContent/Post";
+
 import Notification from "./components/SideContent/Notification";
 import Support from "./components/SideContent/Support";
 import FAQ from "./components/SideContent/FAQ";
 import Usage from "./components/SideContent/Usage";
 
-// Simple component for the bottom bar item for demonstration
 const BottomBarItem = ({ icon, text, active }: any) => (
   <div className={`BottomBarItem ${active ? "active" : ""}`}>
     <span className="icon">{icon}</span>
@@ -24,56 +23,65 @@ const BottomBarItem = ({ icon, text, active }: any) => (
 );
 
 export default function Home() {
-  const [Balance, setBalance] = useState<number>(0);
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-
-  const handleToggleDarkMode = () => {
-    setIsDarkMode((prevMode) => !prevMode);
-  };
+  const [Balance, setBalance] = useState(0);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   return (
     <div className="AppContainer">
-      {/* NavBar */}
       <NavBar />
 
-      {/* TopBar */}
       <TopBar
         Balance={Balance}
         isDarkMode={isDarkMode}
-        handleToggleDarkMode={handleToggleDarkMode}
+        handleToggleDarkMode={() => setIsDarkMode(!isDarkMode)}
       />
 
-      {/* MainContent */}
+      {/* MAIN AREA (Desktop = 2 columns, Mobile = stacked) */}
       <div className="Main">
-        {/* 1. Left Column: Top Content (User, Alert, Social) */}
+        {/* LEFT COLUMN (Desktop) — MainContent */}
         <div className="MainContent">
           <UserSection />
           <AlertSection />
           <SocialService />
+
+          {/* Desktop: posts stay here */}
+          <div className="PostsDesktop">
+            <Post />
+            <Post />
+            <Post />
+          </div>
         </div>
 
-        {/* 2. Right Column: Side Content (Notification, Support, FAQ, Usage) */}
+        {/* RIGHT COLUMN — Side content */}
         <div className="SideContent">
-          <Notification />
-          <Support />
-          <FAQ />
-          <Usage />
+          <div className="notification-widget">
+            <Notification />
+          </div>
+          <div className="support-container">
+            <Support />
+          </div>
+          <div className="faq-widget">
+            <FAQ />
+          </div>
+          <div className="usage-container">
+            <Usage />
+          </div>
         </div>
 
-        {/* 3. NEW: Posts, separated for mobile reordering */}
-        <div className="PostsWrapper">
+        {/* Mobile only: posts move BELOW side content */}
+        <div className="PostsMobile">
           <Post />
           <Post />
           <Post />
         </div>
       </div>
 
-      {/* Mobile Bottom Navigation Bar (as seen in the design image) */}
+      {/* MOBILE BOTTOM NAVIGATION */}
       <div className="BottomBar">
-        <BottomBarItem icon="🏠" text="Trang chủ" active={true} />
-        <BottomBarItem icon="💳" text="Nạp tiền" active={false} />
-        <BottomBarItem icon="📣" text="Hịch vụ" active={false} />
-        <BottomBarItem icon="📜" text="Lịch sử" active={false} />
+        <BottomBarItem icon="🏠" text="Trang chủ" active />
+        <BottomBarItem icon="💳" text="Nạp tiền" />
+        <BottomBarItem icon="📣" text="Dịch vụ" />
+        <BottomBarItem icon="📜" text="Lịch sử" />
       </div>
     </div>
   );

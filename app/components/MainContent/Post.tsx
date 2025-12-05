@@ -27,11 +27,10 @@ export default function Post() {
       </div>
 
       <div id="PostText">
-        <textarea
-          readOnly={true}
-          value="KHUYẾN MÃI HALLOWEEN \n NẠP TIỀN NHẬN THÊM 10% 
-⏰ Thời gian: Từ 10h00 ngày 31/10 đến 23h00 ngày 02/11"
-        />
+        <p>
+          KHUYẾN MÃI HALLOWEEN – NẠP TIỀN NHẬN THÊM 10%  ⏰ Thời gian: Từ 10h00
+          ngày 31/10 đến 23h00 ngày 02/11
+        </p>
       </div>
 
       <div id="PostImageContainer">
