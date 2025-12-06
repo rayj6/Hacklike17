@@ -53,16 +53,16 @@ export default function Home() {
         </div>
         {/* RIGHT COLUMN — Side content */}
         <div className="SideContent">
-          <div className="notification-widget">
+          <div className="notification-widget-wrap">
             <Notification />
           </div>
-          <div className="support-container">
+          <div className="support-container-wrap">
             <Support />
           </div>
-          <div className="faq-widget">
+          <div className="faq-widget-wrap">
             <FAQ />
           </div>
-          <div className="usage-container">
+          <div className="usage-container-wrap">
             <Usage />
           </div>
         </div>

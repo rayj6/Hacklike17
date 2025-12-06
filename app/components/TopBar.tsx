@@ -16,6 +16,7 @@ export default function TopBar({
       {/* SearchBar */}
       <div id="SearchBar">
         <Image
+          className="icon"
           width={16}
           height={16}
           alt=""
@@ -31,6 +32,7 @@ export default function TopBar({
           onClick={handleToggleDarkMode}
         >
           <Image
+            className="icon"
             width={16}
             height={16}
             alt=""
@@ -44,6 +46,7 @@ export default function TopBar({
           onClick={handleToggleDarkMode}
         >
           <Image
+            className="icon"
             width={16}
             height={16}
             alt=""
@@ -70,6 +73,7 @@ export default function TopBar({
       <div id="NavButtons">
         <button>
           <Image
+            className="icon"
             width={24}
             height={24}
             alt=""
@@ -79,6 +83,7 @@ export default function TopBar({
 
         <button>
           <Image
+            className="icon"
             width={17}
             height={20}
             alt=""

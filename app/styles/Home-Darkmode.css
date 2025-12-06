@@ -11,6 +11,19 @@
   --border-light: #2a2c33;
 }
 
+.dark-mode img.icon {
+  filter: brightness(0) invert(1);
+}
+
+.dark-mode p,
+.dark-mode label,
+.dark-mode .notification-text,
+.dark-mode .header-title,
+.dark-mode .support-header h2,
+.dark-mode .faq-header h2 {
+  color: #ffffff;
+}
+
 .dark-mode body,
 .dark-mode .AppContainer {
   background-color: var(--bg-primary) !important;
@@ -90,4 +103,35 @@
 
 .dark-mode .BottomBarItem.active {
   color: #3b82f6; /* keep blue */
+}
+
+.dark-mode .faq-header,
+.dark-mode .faq-question {
+  background: var(--card-bg) !important;
+}
+
+.dark-mode .faq-widget {
+  background: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+}
+
+.dark-mode .faq-header {
+  background: var(--card-bg) !important;
+}
+
+.dark-mode .faq-question {
+  background: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+}
+
+.dark-mode .faq-answer-content {
+  color: var(--text-secondary) !important;
+}
+
+.dark-mode .faq-item {
+  border-color: var(--border-light) !important;
+}
+
+.dark-mode .faq-question:hover {
+  background: #262830 !important;
 }

@@ -16,6 +16,7 @@ export default function Post() {
           <p id="Role">Quản Trị Viên</p>
           <div id="DisplayDate">
             <Image
+              className="icon"
               width={16}
               height={16}
               alt=""

@@ -15,17 +15,6 @@ export default function NavBar() {
           src="/assets/Icon/Logo/Logo.png"
         />
       </div>
-      {/* Close section */}
-      {/* <div id="CloseContainer">
-                  <button>
-                    <Image
-                      width={15}
-                      height={15}
-                      alt=""
-                      src="/assets/Icon/Outline/close.png"
-                    />
-                  </button>
-                </div> */}
 
       <div className="Splitter" />
 
@@ -35,7 +24,13 @@ export default function NavBar() {
         {NavBarMenuComponents.map((element) => (
           <div key={element.id} id="ELementContainer">
             <div id="MenuImage">
-              <Image width={24} height={24} alt="" src={element.ImagePath} />
+              <Image
+                className="icon"
+                width={24}
+                height={24}
+                alt=""
+                src={element.ImagePath}
+              />
             </div>
             <div id="MenuTextElement">
               <p>{element.Category}</p>

@@ -977,7 +977,7 @@ textarea:focus {
   /* RESPONSIVE: Use max-width for side content */
   margin-left: 10px;
   margin-top: 20px;
-  background: white;
+  background-color: white;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
@@ -1042,6 +1042,7 @@ textarea:focus {
 }
 
 .faq-answer {
+  margin-top: 10px;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
