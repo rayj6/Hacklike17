@@ -667,6 +667,7 @@ textarea:focus {
   position: relative;
   margin-top: 20px;
   margin-bottom: 20px;
+  overflow: hidden;
 
   padding-top: 20px;
   padding-bottom: 20px;
@@ -717,7 +718,8 @@ textarea:focus {
   height: auto;
 }
 
-#PostText textarea {
+#PostText p {
+  padding: 10px;
   width: 100%;
   height: auto;
   outline: none;
@@ -1064,7 +1066,7 @@ textarea:focus {
 /* ------- */
 
 #video-preview {
-  width: 100%;
+  width: 280px;
   height: 150px;
   overflow: hidden;
   border-radius: 16px;
@@ -1202,7 +1204,7 @@ textarea:focus {
 
   .Main {
     /* Reset position for full width content */
-    margin-top: 70px; /* Keep the margin-top for the sticky TopBar */
+    margin-top: 10vh; /* Keep the margin-top for the sticky TopBar */
     margin-left: 0; /* Full width, no NavBar offset */
     width: 100%;
     /* CRITICAL: Add padding to the bottom to clear the fixed BottomBar (60px height) */
@@ -1312,15 +1314,7 @@ textarea:focus {
   display: none;
 }
 
-/* STOP MainContent from blocking UserSection reorder */
-.MainContent {
-  display: contents; /* 🟢 removes wrapper so children reorder correctly */
-}
-
-.SideContent {
-  display: contents; /* 🟢 same for side content */
-}
-
+/* MOBILE CUSTOM ORDER */
 @media (max-width: 768px) {
   /* Remove layout blocking wrappers */
   .MainContent,
@@ -1368,6 +1362,214 @@ textarea:focus {
     order: 8 !important;
   }
 
+  .PostsDesktop {
+    display: none;
+  }
+}
+
+/* STOP MainContent from blocking UserSection reorder */
+.MainContent {
+  display: contents; /* 🟢 removes wrapper so children reorder correctly */
+}
+
+.SideContent {
+  display: contents; /* 🟢 same for side content */
+}
+
+/* ============================================
+   📱 MOBILE FIX — Match exact UI design
+   ============================================ */
+@media (max-width: 768px) {
+  /* Replace background with mobile version */
+  #UserSection {
+    background-image: url("/assets/background/mobile.svg");
+    flex-direction: column;
+    height: auto;
+    padding: 20px 16px;
+    border-radius: 16px;
+    align-items: flex-start;
+  }
+
+  /* Avatar centered on top */
+  #AvatarContainer {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  #AvatarContainer img {
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  /* Information section */
+  #InfoContainer {
+    width: 100%;
+    margin: 0;
+  }
+
+  /* First row (Username + Balance) */
+  #FirstSection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+
+  #FirstSection-info #Username {
+    font-size: 18px !important;
+    color: #333333;
+    margin-bottom: 2px;
+    font-weight: 600;
+  }
+
+  #Email {
+    font-size: 16px;
+    color: #333333;
+    font-weight: 300;
+  }
+
+  #FirstSection-amount {
+    margin-top: 20px;
+    border: 3px solid #ffffff44;
+    padding: 4px 10px;
+    width: auto;
+    height: auto;
+    gap: 6px;
+  }
+
+  #FirstSection-amount p {
+    color: white !important;
+    font-size: 16px;
+  }
+
+  /* Second row */
+  #SecondSection {
+    width: 100%;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  #SecondSection-info {
+    width: 60%;
+  }
+
+  #SecondSection-info p {
+    color: #333333;
+    font-size: 14px;
+  }
+
+  #SecondSection-amount {
+    color: #ffffff;
+    font-size: 14px;
+  }
+
+  /* Third row */
+  #ThirdSection {
+    width: 100%;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  #ThirdSection-info {
+    width: 60%;
+  }
+
+  #ThirdSection-info p {
+    color: #333333;
+    font-size: 14px;
+  }
+
+  #ThirdSection-type {
+    color: white;
+    font-size: 14px;
+  }
+
+  /* Progress bar */
+  .progress-bar {
+    width: 100%;
+    margin-top: 14px;
+    height: 8px;
+    background: white;
+    border-radius: 6px;
+  }
+
+  .progress-filler {
+    border-radius: 6px;
+  }
+
+  /* Bottom note */
+  #Note {
+    margin-top: 8px;
+    font-size: 13px;
+    color: white;
+    opacity: 0.9;
+  }
+}
+
+/* MOBILE CUSTOM ORDER */
+@media (max-width: 768px) {
+  /* Force mobile stacking */
+  .Main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 1. User always first */
+  #UserSection {
+    order: 1;
+  }
+
+  /* 2. Notification */
+  .notification-widget {
+    order: 2;
+  }
+
+  /* 3. Support */
+  .support-container {
+    order: 3;
+  }
+
+  /* 4. FAQ */
+  .faq-widget {
+    order: 4;
+  }
+
+  /* 5. Usage */
+  .usage-container {
+    order: 5;
+  }
+
+  /* 6. Alert Section */
+  #AlertContainer {
+    order: 6;
+  }
+
+  /* 7. Social Service */
+  #ServiceContainer {
+    order: 7;
+  }
+
+  /* 8. Posts */
+  .PostsMobile {
+    order: 8;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  /* Hide desktop posts in mobile */
   .PostsDesktop {
     display: none;
   }
