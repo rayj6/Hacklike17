@@ -3,11 +3,11 @@
 /* ============================== */
 
 .dark-mode {
-  --bg-primary: #0f0f12;
-  --bg-secondary: #1a1c22;
+  --bg-primary: #222222;
+  --bg-secondary: #333333;
   --text-primary: #f5f5f5;
   --text-secondary: #b5b5b5;
-  --card-bg: #181a20;
+  --card-bg: #333333;
   --border-light: #2a2c33;
 }
 
@@ -60,6 +60,10 @@
 .dark-mode #ToggleTheme {
   background: var(--bg-secondary);
   color: var(--text-primary);
+}
+
+.dark-mode #Theme-on {
+  background-color: #ffffff14;
 }
 
 /* CARD ELEMENTS (Alert, Service, Post, Notification…) */
