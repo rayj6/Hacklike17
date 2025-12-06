@@ -1,0 +1,93 @@
+/* ============================== */
+/* DARK MODE */
+/* ============================== */
+
+.dark-mode {
+  --bg-primary: #0f0f12;
+  --bg-secondary: #1a1c22;
+  --text-primary: #f5f5f5;
+  --text-secondary: #b5b5b5;
+  --card-bg: #181a20;
+  --border-light: #2a2c33;
+}
+
+.dark-mode body,
+.dark-mode .AppContainer {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* NAVBAR */
+.dark-mode .NavBar {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary);
+  box-shadow: none;
+}
+
+.dark-mode #MenuTextElement p {
+  color: var(--text-primary);
+}
+
+/* TOPBAR */
+.dark-mode .TopBar {
+  background: var(--bg-secondary) !important;
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* SEARCH BAR */
+.dark-mode #SearchBar {
+  background: #2a2c33 !important;
+}
+
+.dark-mode #SearchBar input {
+  color: var(--text-primary);
+}
+
+/* TOGGLE THEME BUTTON */
+.dark-mode #ToggleTheme {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+/* CARD ELEMENTS (Alert, Service, Post, Notification…) */
+.dark-mode #AlertContainer,
+.dark-mode #ServiceContainer,
+.dark-mode #PostContainer,
+.dark-mode .notification-widget,
+.dark-mode .support-container,
+.dark-mode .faq-widget {
+  background: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+  box-shadow: none !important;
+  border: 1px solid var(--border-light);
+}
+
+/* TEXT COLORS */
+.dark-mode p,
+.dark-mode span,
+.dark-mode label {
+  color: var(--text-primary) !important;
+}
+
+/* INPUTS */
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea {
+  background: #2a2c33 !important;
+  color: var(--text-primary) !important;
+  border: 1px solid #3a3c45;
+}
+
+/* MOBILE BOTTOM BAR */
+.dark-mode .BottomBar {
+  background: var(--bg-secondary) !important;
+  border-color: var(--border-light);
+}
+
+.dark-mode .BottomBarItem {
+  color: var(--text-secondary);
+}
+
+.dark-mode .BottomBarItem.active {
+  color: #3b82f6; /* keep blue */
+}

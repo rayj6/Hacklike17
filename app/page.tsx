@@ -1,6 +1,7 @@
 "use client";
 import "./styles/Home.css";
-import { useState } from "react";
+import "./styles/Home-Darkmode.css";
+import { useEffect, useState } from "react";
 import NavBar from "./components/NavBar";
 import TopBar from "./components/TopBar";
 import UserSection from "./components/MainContent/UserSection";
@@ -21,8 +22,17 @@ const BottomBarItem = ({ icon, text, active }: any) => (
 export default function Home() {
   const [Balance, setBalance] = useState(0);
   const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark-mode");
+    } else {
+      document.documentElement.classList.remove("dark-mode");
+    }
+  }, [isDarkMode]);
+
   return (
-    <div className="AppContainer">
+    <div className={`AppContainer ${isDarkMode ? "dark-mode" : ""}`}>
       <NavBar />
       <ResponsiveTopNav />
 

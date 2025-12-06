@@ -26,7 +26,10 @@ export default function TopBar({
 
       {/* Toggle theme */}
       <div id="ToggleTheme">
-        <div id="Theme-on">
+        <div
+          id={isDarkMode ? "Theme" : "Theme-on"}
+          onClick={handleToggleDarkMode}
+        >
           <Image
             width={16}
             height={16}
@@ -35,7 +38,11 @@ export default function TopBar({
           />
           <p>Sáng</p>
         </div>
-        <div id="Theme">
+
+        <div
+          id={isDarkMode ? "Theme-on" : "Theme"}
+          onClick={handleToggleDarkMode}
+        >
           <Image
             width={16}
             height={16}
