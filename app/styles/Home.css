@@ -660,6 +660,7 @@ textarea:focus {
   position: relative;
   margin-top: 20px;
   margin-bottom: 20px;
+  overflow: hidden;
 
   padding-top: 20px;
   padding-bottom: 20px;
@@ -725,6 +726,10 @@ textarea:focus {
   overflow: hidden;
   margin-top: 20px;
   border-radius: 24px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ----------- */
