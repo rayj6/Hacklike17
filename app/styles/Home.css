@@ -706,6 +706,8 @@ textarea:focus {
 }
 
 #PostText {
+  margin-top: 20px;
+
   width: 95%;
   height: auto;
 }
@@ -717,6 +719,12 @@ textarea:focus {
   resize: none;
   border: none;
   background-color: transparent;
+}
+
+#PostImageContainer {
+  overflow: hidden;
+  margin-top: 20px;
+  border-radius: 24px;
 }
 
 /* ----------- */
@@ -1356,5 +1364,145 @@ textarea:focus {
   /* Hide desktop posts */
   .PostsDesktop {
     display: none !important;
+  }
+}
+
+/* ============================================ */
+@media (max-width: 768px) {
+  /* Replace background with mobile version */
+  #UserSection {
+    background-image: url("/assets/background/mobile.svg");
+    flex-direction: column;
+    height: auto;
+    padding: 20px 16px;
+    border-radius: 16px;
+    align-items: flex-start;
+  }
+
+  /* Avatar centered on top */
+  #AvatarContainer {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  #AvatarContainer img {
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  /* Information section */
+  #InfoContainer {
+    width: 100%;
+    margin: 0;
+  }
+
+  /* First row (Username + Balance) */
+  #FirstSection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+
+  #FirstSection-info #Username {
+    font-size: 18px !important;
+    color: #333333;
+    margin-bottom: 2px;
+    font-weight: 600;
+  }
+
+  #Email {
+    font-size: 16px;
+    color: #333333;
+    font-weight: 300;
+  }
+
+  #FirstSection-amount {
+    margin-top: 20px;
+    border: 3px solid #ffffff44;
+    padding: 4px 10px;
+    width: auto;
+    height: auto;
+    gap: 6px;
+  }
+
+  #FirstSection-amount p {
+    color: white !important;
+    font-size: 16px;
+  }
+
+  /* Second row */
+  #SecondSection {
+    width: 100%;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  #SecondSection-info {
+    width: 60%;
+  }
+
+  #SecondSection-info p {
+    color: #333333;
+    font-size: 14px;
+  }
+
+  #SecondSection-amount {
+    color: #ffffff;
+    font-size: 14px;
+  }
+
+  /* Third row */
+  #ThirdSection {
+    width: 100%;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  #ThirdSection-info {
+    width: 60%;
+  }
+
+  #ThirdSection-info p {
+    color: #333333;
+    font-size: 14px;
+  }
+
+  #ThirdSection-type {
+    color: white;
+    font-size: 14px;
+  }
+
+  /* Progress bar */
+  .progress-bar {
+    width: 100%;
+    margin-top: 14px;
+    height: 8px;
+    background: white;
+    border-radius: 6px;
+  }
+
+  .progress-filler {
+    border-radius: 6px;
+  }
+
+  /* Bottom note */
+  #Note {
+    margin-top: 8px;
+    font-size: 13px;
+    color: white;
+    opacity: 0.9;
   }
 }
