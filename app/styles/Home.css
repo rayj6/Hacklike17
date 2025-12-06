@@ -1506,3 +1506,108 @@ textarea:focus {
     opacity: 0.9;
   }
 }
+
+/* HIDE your desktop TopBar when <1200px */
+@media (max-width: 1200px) {
+  .TopBar {
+    display: none !important;
+  }
+}
+
+/* SHOW MobileTopNav only when <1200px */
+.MobileTopNav {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .MobileTopNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #1d1e29;
+    height: 65px;
+    padding: 0 16px;
+
+    border-bottom: 1px solid #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 1000;
+  }
+
+  .MobileTopNav .nav-left,
+  .MobileTopNav .nav-right,
+  .MobileTopNav .nav-center {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .MobileTopNav .nav-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* DRAWER MENU */
+.DrawerOverlay {
+  display: none;
+}
+
+.DrawerMenu {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .DrawerOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+    z-index: 999;
+  }
+
+  .DrawerOverlay.show {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .DrawerMenu {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 260px;
+    height: 100vh;
+    background: #1d1e29;
+    padding: 20px;
+    transition: 0.3s;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .DrawerMenu.open {
+    left: 0;
+  }
+
+  .DrawerMenu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .DrawerMenu ul li {
+    padding: 18px 0;
+    font-size: 17px;
+    color: #f3f3f3;
+    border-bottom: 1px solid #333;
+    cursor: pointer;
+  }
+}

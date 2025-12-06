@@ -11,6 +11,8 @@ import Notification from "./components/SideContent/Notification";
 import Support from "./components/SideContent/Support";
 import FAQ from "./components/SideContent/FAQ";
 import Usage from "./components/SideContent/Usage";
+import ResponsiveTopNav from "./components/ResponsiveTopNav";
+
 const BottomBarItem = ({ icon, text, active }: any) => (
   <div className={`BottomBarItem ${active ? "active" : ""}`}>
     <span className="icon">{icon}</span> <span className="text">{text}</span>
@@ -22,6 +24,8 @@ export default function Home() {
   return (
     <div className="AppContainer">
       <NavBar />
+      <ResponsiveTopNav />
+
       <TopBar
         Balance={Balance}
         isDarkMode={isDarkMode}

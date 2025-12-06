@@ -27,6 +27,7 @@ export default function SocialService() {
         <input type="text" placeholder="Nhập link bài viết" />
         <div className="toggle-group">
           <input
+            onChange={() => console.log("check")}
             type="checkbox"
             id="multi-order-toggle"
             className="toggle-checkbox"
